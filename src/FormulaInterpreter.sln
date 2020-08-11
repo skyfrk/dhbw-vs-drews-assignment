@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30330.147
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormulaInterpreter.Logic.Csharp", "FormulaInterpreter.Logic.Csharp\FormulaInterpreter.Logic.Csharp.csproj", "{C1F30275-7B3C-4607-B351-271FA9F582BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormulaInterpreter.Logic.Csharp.Test", "FormulaInterpreter.Logic.Csharp.Test\FormulaInterpreter.Logic.Csharp.Test.csproj", "{CFB22577-CADC-4545-B38D-3975C545ECAB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C1F30275-7B3C-4607-B351-271FA9F582BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1F30275-7B3C-4607-B351-271FA9F582BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1F30275-7B3C-4607-B351-271FA9F582BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1F30275-7B3C-4607-B351-271FA9F582BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFB22577-CADC-4545-B38D-3975C545ECAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFB22577-CADC-4545-B38D-3975C545ECAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFB22577-CADC-4545-B38D-3975C545ECAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFB22577-CADC-4545-B38D-3975C545ECAB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {89106547-0C3A-4721-B0E5-1BD852E8FDAA}
+	EndGlobalSection
+EndGlobal
