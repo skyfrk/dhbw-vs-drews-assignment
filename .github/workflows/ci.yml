@@ -1,0 +1,47 @@
+name: ci
+
+on:
+  push:
+    paths:
+      - 'src/**'
+      - '!src/.devcontainer/**'
+      - '!src/.vscode/**'
+      - '!src/.vs/**'
+      - '!src/.gitignore'
+  pull_request:
+    paths:
+      - 'src/**'
+      - '!src/.devcontainer/**'
+      - '!src/.vscode/**'
+      - '!src/.vs/**'
+      - '!src/.gitignore'
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: build
+    runs-on: windows-2019
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: setup dotnet v3.1.x
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '3.1.x'
+      - name: install dependencies
+        working-directory: src
+        run: dotnet restore
+      - name: build
+        working-directory: src
+        run: dotnet build --configuration Release --no-restore
+      - name: test
+        working-directory: src
+        run: dotnet test --no-restore
+      - name: publish
+        working-directory: src
+        run: dotnet publish FormulaInterpreter.sln  --no-restore -o build
+      - name: upload
+        uses: actions/upload-artifact@v2
+        with:
+          name: build
+          path: src/build/*
