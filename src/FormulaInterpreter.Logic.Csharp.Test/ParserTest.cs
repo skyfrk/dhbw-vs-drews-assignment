@@ -95,7 +95,7 @@ namespace FormulaInterpreter.Logic.Csharp.Test
         }
 
         [TestMethod]
-        public void BuildTokenTree_MisplacedEqualSign_ThrowsException()
+        public void BuildTokenTree_EqualSignInfront_ThrowsException()
         {
             var tokens = new Token[]
             {
@@ -111,7 +111,62 @@ namespace FormulaInterpreter.Logic.Csharp.Test
                 .Should()
                 .Throw<InvalidOperationException>()
                 .WithMessage("Invalid token combination.");
-            
+        }
+
+        [TestMethod]
+        public void BuildTokenTree_DoubleEqualSign_ThrowsException()
+        {
+            var tokens = new Token[]
+            {
+                new Token(TokenType.Number, 1),
+                new Token(TokenType.Minus),
+                new Token(TokenType.Number, 1),
+                new Token(TokenType.Equal),
+                new Token(TokenType.Equal),
+            };
+
+            Action action = () => Parser.BuildTokenTree(tokens);
+
+            action
+                .Should()
+                .Throw<InvalidOperationException>()
+                .WithMessage("Invalid token combination.");
+        }
+
+        [TestMethod]
+        public void BuildTokenTree_DoubleOperator_ThrowsException()
+        {
+            var tokens = new Token[]
+            {
+                new Token(TokenType.Number, 1),
+                new Token(TokenType.Minus),
+                new Token(TokenType.Minus, 1),
+            };
+
+            Action action = () => Parser.BuildTokenTree(tokens);
+
+            action
+                .Should()
+                .Throw<InvalidOperationException>()
+                .WithMessage("Invalid token combination.");
+        }
+
+        [TestMethod]
+        public void BuildTokenTree_DoubleNumber_ThrowsException()
+        {
+            var tokens = new Token[]
+            {
+                new Token(TokenType.Number, 1),
+                new Token(TokenType.Number, 1),
+                new Token(TokenType.Minus, 1),
+            };
+
+            Action action = () => Parser.BuildTokenTree(tokens);
+
+            action
+                .Should()
+                .Throw<InvalidOperationException>()
+                .WithMessage("Invalid token combination.");
         }
     }
 }
