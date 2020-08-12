@@ -25,27 +25,40 @@ namespace FormulaInterpreter.Logic.Csharp.Test
                     "1-2", new Token[] { new Token(TokenType.Number, 1), new Token(TokenType.Minus), new Token(TokenType.Number, 2) }
                 },
                 {
-                    " 1 + 2 - 3 =", new Token[] { new Token(TokenType.Number, 1), new Token(TokenType.Plus), new Token(TokenType.Number, 2), new Token(TokenType.Minus), new Token(TokenType.Number, 3) }
+                    " 1 + 2 - 3 =", new Token[] { new Token(TokenType.Number, 1), new Token(TokenType.Plus), new Token(TokenType.Number, 2), new Token(TokenType.Minus), new Token(TokenType.Number, 3), new Token(TokenType.Equal) }
                 },
                 {
-                    "1-2=", new Token[] { new Token(TokenType.Number, 1), new Token(TokenType.Minus), new Token(TokenType.Number, 2) }
+                    "1-2=", new Token[] { new Token(TokenType.Number, 1), new Token(TokenType.Minus), new Token(TokenType.Number, 2), new Token(TokenType.Equal) }
                 },
                 {
-                    "1-+2=", new Token[] { new Token(TokenType.Number, 1), new Token(TokenType.Minus), new Token(TokenType.Plus), new Token(TokenType.Number, 2) }
+                    "1-+2=", new Token[] { new Token(TokenType.Number, 1), new Token(TokenType.Minus), new Token(TokenType.Plus), new Token(TokenType.Number, 2), new Token(TokenType.Equal) }
                 },
                 {
-                    "123", new Token[] { new Token(TokenType.Number, 1), new Token(TokenType.Number, 2), new Token(TokenType.Plus), new Token(TokenType.Number, 3) }
+                    "123", new Token[] { new Token(TokenType.Number, 1), new Token(TokenType.Number, 2), new Token(TokenType.Number, 3) }
                 },
                 {
-                    "1 2   3 ", new Token[] { new Token(TokenType.Number, 1), new Token(TokenType.Number, 2), new Token(TokenType.Plus), new Token(TokenType.Number, 3) }
+                    "1 2   3 ", new Token[] { new Token(TokenType.Number, 1), new Token(TokenType.Number, 2), new Token(TokenType.Number, 3) }
                 }
 
             };
 
             foreach (var test in tests)
             {
-                Lexer.Tokenize(test.Key).Should().BeEquivalentTo(test.Value);
+                var tokens = Lexer.Tokenize(test.Key);
+                
+                tokens
+                    .Should()
+                    .BeEquivalentTo(test.Value);
             }
+        }
+
+        [TestMethod]
+        public void Tokenize_NullFormula_ThrowsException()
+        {
+            Action action = () => Lexer.Tokenize(null);
+            action
+                .Should()
+                .Throw<ArgumentNullException>();
         }
 
         [DataTestMethod]
@@ -67,12 +80,11 @@ namespace FormulaInterpreter.Logic.Csharp.Test
         [DataRow("")]
         [DataRow(" ")]
         [DataRow("   ")]
-        [DataRow("=")]
-        [DataRow(" =")]
-        [DataRow(" = ")]
         public void Tokenize_EmptyFormula_ReturnsEmptyArray(string formula)
         {
-            Lexer.Tokenize(formula).Should().BeEmpty();
+            Lexer.Tokenize(formula)
+                .Should()
+                .BeEmpty();
         }
     }
 }
