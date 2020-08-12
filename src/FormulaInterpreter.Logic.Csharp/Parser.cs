@@ -1,10 +1,13 @@
-﻿using System;
+﻿using FormulaInterpreter.Logic.Csharp.Models;
+using System;
 
 namespace FormulaInterpreter.Logic.Csharp
 {
-    // should parse tokens and return a tree
-    public class Parser
+    public static class Parser
     {
-
+        public static TokenTree BuildTokenTree(Token[] tokens)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

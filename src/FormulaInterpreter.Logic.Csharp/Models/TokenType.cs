@@ -8,6 +8,7 @@ namespace FormulaInterpreter.Logic.Csharp.Models
     {
         Plus,
         Minus,
-        Number
+        Number,
+        Equal
     }
 }

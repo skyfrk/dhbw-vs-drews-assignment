@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace FormulaInterpreter.Logic.Csharp
+﻿namespace FormulaInterpreter.Logic.Csharp
 {
     /// <summary>
     /// A calculator which is able to solve simple formulas.
@@ -16,7 +12,11 @@ namespace FormulaInterpreter.Logic.Csharp
         /// <returns>Result of the formula.</returns>
         public static int Solve(string formula)
         {
-            throw new NotImplementedException();
+            var tokens = Lexer.Tokenize(formula);
+
+            var tokenTree = Parser.BuildTokenTree(tokens);
+
+            return tokenTree.GetValue();
         }
     }
 }
