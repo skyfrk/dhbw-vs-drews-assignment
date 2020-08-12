@@ -49,17 +49,24 @@ namespace FormulaInterpreter.Logic.Csharp.Test
         {
             var tokens = new Token[]
             {
-                new Token(TokenType.Number, 1),
-                new Token(TokenType.Minus),
-                new Token(TokenType.Number, 1),
-                new Token(TokenType.Plus),
-                new Token(TokenType.Number, 2),
-                new Token(TokenType.Equal),
+                new Token(TokenType.Number, 1), // 0
+                new Token(TokenType.Minus),     // 1
+                new Token(TokenType.Number, 1), // 2
+                new Token(TokenType.Plus),      // 3
+                new Token(TokenType.Number, 2), // 4
+                new Token(TokenType.Equal),     // 5
             };
 
-            var correct_tree = new TokenTree(tokens[1], new TokenTree(tokens[0]), new TokenTree(tokens[3], new TokenTree(tokens[2]), new TokenTree(tokens[4])));
+            var correct_tree = new TokenTree(
+                tokens[3],
+                new TokenTree(
+                    tokens[1],
+                    new TokenTree(tokens[0]),
+                    new TokenTree(tokens[2])),
+                new TokenTree(tokens[4]));
 
             var tree = Parser.BuildTokenTree(tokens);
+            var res = tree.GetValue();
 
             tree.Should().BeEquivalentTo(correct_tree);
         }
@@ -69,25 +76,26 @@ namespace FormulaInterpreter.Logic.Csharp.Test
         {
             var tokens = new Token[]
             {
-                new Token(TokenType.Number, 1),
-                new Token(TokenType.Minus),
-                new Token(TokenType.Number, 1),
-                new Token(TokenType.Plus),
-                new Token(TokenType.Number, 2),
-                new Token(TokenType.Minus),
-                new Token(TokenType.Number, 3),
+                new Token(TokenType.Number, 1), // 0
+                new Token(TokenType.Minus),     // 1
+                new Token(TokenType.Number, 1), // 2
+                new Token(TokenType.Plus),      // 3
+                new Token(TokenType.Number, 2), // 4
+                new Token(TokenType.Minus),     // 5
+                new Token(TokenType.Number, 3), // 6
             };
 
             var correct_tree = new TokenTree(
-                tokens[1],
-                new TokenTree(tokens[0]),
+                tokens[5],
                 new TokenTree(
                     tokens[3],
-                    new TokenTree(tokens[2]),
                     new TokenTree(
-                        tokens[5],
-                        new TokenTree(tokens[4]),
-                        new TokenTree(tokens[6]))));
+                        tokens[1],
+                        new TokenTree(tokens[0]),
+                        new TokenTree(tokens[2])),
+                    new TokenTree(tokens[4])
+                    ),
+                new TokenTree(tokens[6]));
 
             var tree = Parser.BuildTokenTree(tokens);
 
