@@ -29,6 +29,10 @@ Namespace FormulaInterpreter.Logic.VisualBasic.Test
         <DataRow("   ")>
         <DataRow("=")>
         <DataRow(" = ")>
+        <DataRow("2-1+")>
+        <DataRow("2-1+ ")>
+        <DataRow("1+2-")>
+        <DataRow("1+2- ")>
         <DataRow("a")>
         <DataRow("fail")>
         <DataRow("*.:")>
