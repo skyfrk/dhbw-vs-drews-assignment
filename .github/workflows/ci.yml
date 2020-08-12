@@ -28,6 +28,8 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '3.1.x'
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1
       - name: install dependencies
         working-directory: src
         run: dotnet restore
