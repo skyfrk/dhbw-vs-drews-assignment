@@ -28,21 +28,15 @@ namespace FormulaInterpreter.Logic.Csharp
             if (f.Length < 3) throw new InvalidOperationException();
             int sum = 0;
             char op = '+';
-            string last = string.Empty;
             for (int i = 0; i < f.Length; i++)
             {
-                if (f[i] == ' ' || (f[i] == '=' && i + 1 == f.Length && last == "num")) continue;
-                if ((f[i] == '+' || f[i] == '-') && last != "op")
-                {
-                    op = f[i];
-                    last = "op";
-                    continue;
-                }
-                if (char.IsDigit(f[i]) && last != "num")
+                if (f[i] == ' ' || (f[i] == '=' && i + 1 == f.Length && op == 'n')) continue;
+                if ((f[i] == '+' || f[i] == '-') && op == 'n') { op = f[i]; continue; }
+                if (char.IsDigit(f[i]) && op != 'n')
                 {
                     if (op == '+') sum += (int)char.GetNumericValue(f[i]);
                     if (op == '-') sum -= (int)char.GetNumericValue(f[i]);
-                    last = "num";
+                    op = 'n';
                     continue;
                 }
                 throw new InvalidOperationException();
