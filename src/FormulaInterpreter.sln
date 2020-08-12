@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30330.147
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormulaInterpreter.Logic.Csharp", "FormulaInterpreter.Logic.Csharp\FormulaInterpreter.Logic.Csharp.csproj", "{C1F30275-7B3C-4607-B351-271FA9F582BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FormulaInterpreter.Logic.Csharp", "FormulaInterpreter.Logic.Csharp\FormulaInterpreter.Logic.Csharp.csproj", "{C1F30275-7B3C-4607-B351-271FA9F582BC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormulaInterpreter.Logic.Csharp.Test", "FormulaInterpreter.Logic.Csharp.Test\FormulaInterpreter.Logic.Csharp.Test.csproj", "{CFB22577-CADC-4545-B38D-3975C545ECAB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FormulaInterpreter.Logic.Csharp.Test", "FormulaInterpreter.Logic.Csharp.Test\FormulaInterpreter.Logic.Csharp.Test.csproj", "{CFB22577-CADC-4545-B38D-3975C545ECAB}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "FormulaInterpreter.Logic.VisualBasic", "FormulaInterpreter.Logic.VisualBasic\FormulaInterpreter.Logic.VisualBasic.vbproj", "{A80A7AD5-473D-40F2-AE81-CFEE8588FBEB}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "FormulaInterpreter.Logic.VisualBasic.Test", "FormulaInterpreter.Logic.VisualBasic.Test\FormulaInterpreter.Logic.VisualBasic.Test.vbproj", "{DA64BEF2-95CE-439D-ABA9-821DF62F7551}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{CFB22577-CADC-4545-B38D-3975C545ECAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CFB22577-CADC-4545-B38D-3975C545ECAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CFB22577-CADC-4545-B38D-3975C545ECAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A80A7AD5-473D-40F2-AE81-CFEE8588FBEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A80A7AD5-473D-40F2-AE81-CFEE8588FBEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A80A7AD5-473D-40F2-AE81-CFEE8588FBEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A80A7AD5-473D-40F2-AE81-CFEE8588FBEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA64BEF2-95CE-439D-ABA9-821DF62F7551}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA64BEF2-95CE-439D-ABA9-821DF62F7551}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA64BEF2-95CE-439D-ABA9-821DF62F7551}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA64BEF2-95CE-439D-ABA9-821DF62F7551}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
