@@ -15,14 +15,19 @@ namespace FormulaInterpreter.Logic.Csharp
                 throw new InvalidOperationException("Invalid token combination.");
             }
 
-            var tokenList = CleanTokens(tokens);
+            var tokenList = RemoveTrailingEqualSign(tokens);
             ValidateTokens(tokenList);
 
-            // transform
-            throw new NotImplementedException();
+            TokenTree tree = new TokenTree(tokenList[1], new TokenTree(tokenList[0]), new TokenTree(tokenList[2]));
+            for (int i = 3; i < tokenList.Count; i = i + 2)
+            {
+                tree = new TokenTree(tokenList[i], tree, new TokenTree(tokenList[i + 1]));
+            }
+
+            return tree;
         }
 
-        private static List<Token> CleanTokens(Token[] tokens)
+        private static List<Token> RemoveTrailingEqualSign(Token[] tokens)
         {
             var tokenList = tokens.ToList();
             if (tokens[tokens.Length - 1].Type == TokenType.Equal)
@@ -34,21 +39,23 @@ namespace FormulaInterpreter.Logic.Csharp
 
         private static void ValidateTokens(List<Token> tokens)
         {
-            if (tokens.Count % 2 != 0)
+            if (tokens.Count < 3 || tokens.Count % 2 == 0)
             {
                 throw new InvalidOperationException("Invalid token combination.");
             }
 
-            for (int i = 0; i < tokens.Count; i = i + 2)
+            for (int i = 0; i < tokens.Count; i++)
             {
-                if (tokens[i].Type != TokenType.Number)
+                if (i % 2 == 0)
                 {
-                    throw new InvalidOperationException("Invalid token combination.");
+                    if (tokens[i].Type != TokenType.Number)
+                    {
+                        throw new InvalidOperationException("Invalid token combination.");
+                    }
                 }
-
-                if (i + 1 < tokens.Count - 1)
+                else
                 {
-                    if (tokens[i + 1].Type != TokenType.Minus || tokens[i + 1].Type != TokenType.Plus)
+                    if (tokens[i].Type != TokenType.Minus && tokens[i].Type != TokenType.Plus)
                     {
                         throw new InvalidOperationException("Invalid token combination.");
                     }
