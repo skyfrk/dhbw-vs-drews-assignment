@@ -7,7 +7,6 @@ Public Module Calculator
         Dim op As Char = "+"c
 
         For i As Integer = 0 To f.Length - 1
-            If f(i) = " "c OrElse (f(i) = "="c AndAlso i + 1 = f.Length AndAlso op = "n"c) Then Continue For
 
             If (f(i) = "+"c OrElse f(i) = "-"c) AndAlso op = "n"c Then
                 op = f(i)
@@ -21,9 +20,11 @@ Public Module Calculator
                 Continue For
             End If
 
+            If f(i) = " "c OrElse (f(i) = "="c AndAlso i + 1 = f.Length) Then Continue For
             Throw New InvalidOperationException()
         Next
 
+        If op <> "n"c Then Throw New InvalidOperationException()
         Return sum
     End Function
 End Module

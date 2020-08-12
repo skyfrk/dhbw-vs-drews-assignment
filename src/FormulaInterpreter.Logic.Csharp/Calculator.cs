@@ -30,7 +30,6 @@ namespace FormulaInterpreter.Logic.Csharp
             char op = '+';
             for (int i = 0; i < f.Length; i++)
             {
-                if (f[i] == ' ' || (f[i] == '=' && i + 1 == f.Length && op == 'n')) continue;
                 if ((f[i] == '+' || f[i] == '-') && op == 'n') { op = f[i]; continue; }
                 if (char.IsDigit(f[i]) && op != 'n')
                 {
@@ -39,8 +38,10 @@ namespace FormulaInterpreter.Logic.Csharp
                     op = 'n';
                     continue;
                 }
+                if (f[i] == ' ' || (f[i] == '=' && i + 1 == f.Length)) continue;
                 throw new InvalidOperationException();
             }
+            if (op != 'n') throw new InvalidOperationException();
             return sum;
         }
     }
