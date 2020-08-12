@@ -11,6 +11,8 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "FormulaInterpreter.Logic.Vi
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "FormulaInterpreter.Logic.VisualBasic.Test", "FormulaInterpreter.Logic.VisualBasic.Test\FormulaInterpreter.Logic.VisualBasic.Test.vbproj", "{DA64BEF2-95CE-439D-ABA9-821DF62F7551}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "FormulaInterpreter.App.VisualBasic", "FormulaInterpreter.App.VisualBasic\FormulaInterpreter.App.VisualBasic.vbproj", "{9F3404D7-BE9B-4825-BC8A-5F8AE0304B86}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{DA64BEF2-95CE-439D-ABA9-821DF62F7551}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA64BEF2-95CE-439D-ABA9-821DF62F7551}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA64BEF2-95CE-439D-ABA9-821DF62F7551}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F3404D7-BE9B-4825-BC8A-5F8AE0304B86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F3404D7-BE9B-4825-BC8A-5F8AE0304B86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F3404D7-BE9B-4825-BC8A-5F8AE0304B86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F3404D7-BE9B-4825-BC8A-5F8AE0304B86}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
