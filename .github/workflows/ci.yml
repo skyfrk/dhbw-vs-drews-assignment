@@ -24,26 +24,13 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v2
-      - name: setup dotnet v3.1.x
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: '3.1.x'
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v1
-      - name: install dependencies
-        working-directory: src
-        run: dotnet restore
       - name: build
         working-directory: src
-        run: dotnet build --configuration Release --no-restore
-      - name: test
-        working-directory: src
-        run: dotnet test --no-restore
-      - name: publish
-        working-directory: src
-        run: dotnet publish FormulaInterpreter.sln  --no-restore -o build
+        run: msbuild FormulaInterpreter.sln /t:Build /p:Configuration=Release
       - name: upload
         uses: actions/upload-artifact@v2
         with:
           name: build
-          path: src/build/*
+          path: src/FormulaInterpreter.App.VisualBasic/bin/Release
