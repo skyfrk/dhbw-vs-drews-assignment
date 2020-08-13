@@ -44,8 +44,6 @@ jobs:
       - name: Deploy
         uses: softprops/action-gh-release@v1
         with:
-          files: |
-            KursB_GenzRobin.zip
-            Binaries.zip
+          files: KursB_SimonEsslinger.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
