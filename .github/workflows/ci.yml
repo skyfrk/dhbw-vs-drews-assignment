@@ -19,7 +19,7 @@ on:
 
 jobs:
   build:
-    name: build
+    name: Build
     runs-on: windows-2019
     steps:
       - name: checkout
@@ -33,3 +33,32 @@ jobs:
         with:
           name: build
           path: src/FormulaInterpreter.App.VisualBasic/bin/Release
+  deploy:
+    if: startsWith(github.ref, 'refs/tags/')
+    name: Deploy to GitHub Releases
+    needs: [ build ]
+    runs-on: ubuntu-18.04
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: download
+        uses: actions/download-artifact@v2
+        with:
+          path: artifacts
+      - name: prepare
+        run: |
+          mkdir -p staging/KursB_SimonEsslinger/source
+          cp -r src/FormulaInterpreter.App.VisualBasic staging/KursB_SimonEsslinger/source/
+          cp -r src/FormulaInterpreter.Logic.VisualBasic staging/KursB_SimonEsslinger/source/
+          cp -r src/FormulaInterpreter.Logic.VisualBasic.Test staging/KursB_SimonEsslinger/source/
+          mkdir -p staging/KursB_SimonEsslinger/bin
+          mv artifacts/build/* staging/KursB_SimonEsslinger/bin
+          cd staging && zip -r ../KursB_SimonEsslinger.zip KursB_SimonEsslinger
+      - name: Deploy
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            KursB_GenzRobin.zip
+            Binaries.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
