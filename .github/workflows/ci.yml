@@ -27,8 +27,7 @@ jobs:
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v1
       - name: build
-        working-directory: src
-        run: msbuild FormulaInterpreter.sln /t:Build /p:Configuration=Release
+        run: msbuild src/FormulaInterpreter.App.VisualBasic/FormulaInterpreter.App.VisualBasic.vbproj /t:Build /p:Configuration=Release
       - name: upload
         uses: actions/upload-artifact@v2
         with:
