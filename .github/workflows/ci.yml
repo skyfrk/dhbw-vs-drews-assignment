@@ -24,14 +24,10 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v2
-      - name: setup nuget
-        uses: nuget/setup-nuget@v1
       - name: setup msbuild
         uses: microsoft/setup-msbuild@v1
-      - name: install dependencies
-        run: nuget restore src/FormulaInterpreter.App.VisualBasic/FormulaInterpreter.App.VisualBasic.vbproj
       - name: build
-        run: msbuild src/FormulaInterpreter.App.VisualBasic/FormulaInterpreter.App.VisualBasic.vbproj /t:Build /p:Configuration=Release
+        run: msbuild src/FormulaInterpreter.App.VisualBasic/FormulaInterpreter.App.VisualBasic.vbproj /t:Restore /t:Build /p:Configuration=Release
       - name: upload
         uses: actions/upload-artifact@v2
         with:
