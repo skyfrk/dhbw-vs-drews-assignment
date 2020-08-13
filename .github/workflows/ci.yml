@@ -2,19 +2,6 @@ name: ci
 
 on:
   push:
-    paths:
-      - 'src/**'
-      - '!src/.devcontainer/**'
-      - '!src/.vscode/**'
-      - '!src/.vs/**'
-      - '!src/.gitignore'
-  pull_request:
-    paths:
-      - 'src/**'
-      - '!src/.devcontainer/**'
-      - '!src/.vscode/**'
-      - '!src/.vs/**'
-      - '!src/.gitignore'
   workflow_dispatch:
 
 jobs:
