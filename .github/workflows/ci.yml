@@ -34,16 +34,16 @@ jobs:
           path: artifacts
       - name: prepare
         run: |
-          mkdir -p staging/KursB_SimonEsslinger/source
-          cp -r src/FormulaInterpreter.App.VisualBasic staging/KursB_SimonEsslinger/source/
-          cp -r src/FormulaInterpreter.Logic.VisualBasic staging/KursB_SimonEsslinger/source/
-          cp -r src/FormulaInterpreter.Logic.VisualBasic.Test staging/KursB_SimonEsslinger/source/
-          mkdir -p staging/KursB_SimonEsslinger/bin
-          mv artifacts/build/* staging/KursB_SimonEsslinger/bin
-          cd staging && zip -r ../KursB_SimonEsslinger.zip KursB_SimonEsslinger
+          mkdir -p staging/KursB_EsslingerSimon/source
+          cp -r src/FormulaInterpreter.App.VisualBasic staging/KursB_EsslingerSimon/source/
+          cp -r src/FormulaInterpreter.Logic.VisualBasic staging/KursB_EsslingerSimon/source/
+          cp -r src/FormulaInterpreter.Logic.VisualBasic.Test staging/KursB_EsslingerSimon/source/
+          mkdir -p staging/KursB_EsslingerSimon/bin
+          mv artifacts/build/* staging/KursB_EsslingerSimon/bin
+          cd staging && zip -r ../KursB_EsslingerSimon.zip KursB_EsslingerSimon
       - name: Deploy
         uses: softprops/action-gh-release@v1
         with:
-          files: KursB_SimonEsslinger.zip
+          files: KursB_EsslingerSimon.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
